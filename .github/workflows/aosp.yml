@@ -81,7 +81,10 @@ jobs:
       - name: Build Environment
         run: |
           sudo apt-get update
-          sudo apt-get install -y aria2
+          sudo apt-get install -y \
+              bc bison build-essential ccache curl flex g++-multilib gcc-multilib \
+              git gnupg gperf libncurses5-dev libssl-dev libtool pkg-config \
+              python3 python3-pip rsync unzip wget zip zlib1g-dev aria2
           git clone https://gitlab.com/OrangeFox/misc/scripts.git -b master
           cd scripts
           sudo bash setup/android_build_env.sh
