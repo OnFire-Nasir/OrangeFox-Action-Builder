@@ -24,7 +24,7 @@ on:
       KERNEL_TREE:
         description: 'OrangeFox Kernel Tree'
         required: true
-        default: 'https://github.com/NSR-Resources/android_kernel_xiaomi_lisa.git'
+        default: 'https://github.com/911-NSR/android_kernel_qcom_sm8350'
       DEVICE_TREE_BRANCH:
         description: 'OrangeFox Device Tree Branch'
         required: true
