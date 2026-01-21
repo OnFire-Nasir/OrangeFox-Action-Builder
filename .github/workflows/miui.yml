@@ -29,6 +29,18 @@ on:
         description: 'Specify your Device Path'
         required: true
         default: 'device/xiaomi/lisa'
+      KERNEL_TREE:
+        description: 'OrangeFox Kernel Tree'
+        required: true
+        default: 'https://github.com/NSR-XINE/kernel_qcom_lahaina.git'
+      KERNEL_TREE_BRANCH:
+        description: 'OrangeFox Device Tree Branch'
+        required: true
+        default: 'staging'
+      KERNEL_PATH:
+        description: 'Specify your Device Path'
+        required: true
+        default: 'kernel/xiaomi/lisa'
       DEVICE_NAME:
         description: 'Specify your Device Codename'
         required: true
@@ -87,6 +99,14 @@ jobs:
         git clone ${{ inputs.DEVICE_TREE }} -b ${{ inputs.DEVICE_TREE_BRANCH }} ./${{ inputs.DEVICE_PATH }}
         cd ${{ inputs.DEVICE_PATH }}
         echo "COMMIT_ID=$(git rev-parse HEAD)" >> $GITHUB_ENV
+
+    - name: Clone Kernel Tree
+      run: |
+        cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ inputs.MANIFEST_BRANCH }}
+        git clone ${{ inputs.KERNEL_TREE }} -b ${{ inputs.KERNEL_TREE_BRANCH }} ./${{ inputs.KERNEL_PATH }}
+        cd ${{ inputs.DEVICE_PATH }}
+        echo "COMMIT_ID=$(git rev-parse HEAD)" >> $GITHUB_ENV
+        
 
     - name: Building OrangeFox
       run: |
